@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание нового пользователя</title>
+</head>
+<body>
+    <form th:action="@{/equipment-create}" th:object="${equipment}" method="post">
+
+        <label for="number_position">Номер позиции</label>
+        <input type="text" th:field="*{numberPosition}" id="number_position" placeholder="введите номер позиции">
+
+        <label for="name">Наименование позиции</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="введите наименование позиции">
+
+        <label for="shipCondition">Состояние оборудования</label>
+        <input type="text" th:field="*{shipCondition}" id="shipCondition" placeholder="1-исправно, 2-неисправно">
+
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>

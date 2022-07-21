@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipments list</title>
+</head>
+<body>
+<H1> Где Русский язык?????</H1>
+
+<div>
+    <button type="submit" onclick="location.href='/equipment-create'">Забабахать нового юзера</button>
+
+    <table>
+        <tr th:each="equipment_item: ${equipments}">
+        <td style="border: 1px solid black" th:text="${equipment_item.getId()}"></td>
+        <td style="border: 1px solid black" th:text="${equipment_item.getNumberPosition()}"></td>
+        <td style="border: 1px solid black" th:text="${equipment_item.getName()}"></td>
+        <td style="border: 1px solid black" th:text="${equipment_item.getShipCondition()}"></td>
+        <td style="border: 1px solid black" ><a th:href="@{equipment-update/id={id}(id=${equipment_item.getId})}">Edit</a></td>
+        <td style="border: 1px solid black" ><a th:href="@{equipment-delete/id={id}(id=${equipment_item.getId})}">Delete</a></td>
+
+    </tr>
+</table>
+</div>
+
+<div>
+    <button type="submit" onclick="location.href='/equipment-create'">Забабахать нового юзера</button>
+
+    <table>
+        <tr th:each="equipment_item: ${equipments}">
+            <td style="border: 1px solid black" th:text="${equipment_item.getId()}"></td>
+            <td style="border: 1px solid black" th:text="${equipment_item.getNumberPosition()}"></td>
+            <td style="border: 1px solid black" th:text="${equipment_item.getName()}"></td>
+            <td style="border: 1px solid black" th:text="${equipment_item.getShipCondition()}"></td>
+            <td style="border: 1px solid black" ><a th:href="@{equipment-update/id={id}(id=${equipment_item.getId})}">Edit</a></td>
+            <td style="border: 1px solid black" ><a th:href="@{equipment-delete/id={id}(id=${equipment_item.getId})}">Delete</a></td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
