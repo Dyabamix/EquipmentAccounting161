@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание нового пользователя</title>
+</head>
+<body>
+<form th:action="@{/defect-create}" th:object="${defect}" method="post">
+
+    <label for="name_defect">Дефект
+    </label>
+    <input type="text" th:field="*{name}" id="name_defect" placeholder="введите краткое описание дефекта">
+
+    <label for="defect_description">Описание дефекта</label>
+    <input type="text" th:field="*{defectDescription}" id="defect_description" placeholder="введите полное описание дефекта">
+
+    <label for="date_of_defect_detection">Дата</label>
+    <input type="date" th:field="*{date}" id="date_of_defect_detection" >
+
+    <input type="submit" value="Сохранить">
+</form>
+</body>
+</html>

@@ -1,8 +1,10 @@
 package com.projectForTPP2.EquipmentAccounting.model.elementsOfTheDbStructure;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -15,5 +17,6 @@ public class Defect {
     private String name;
     @Column(name = "defect_description")
     private String defectDescription;
-    private Date date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
 }

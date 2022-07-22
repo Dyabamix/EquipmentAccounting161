@@ -3,6 +3,8 @@ package com.projectForTPP2.EquipmentAccounting.model.elementsOfTheDbStructure;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,4 +18,5 @@ public class Equipment {
     private String name;
     @Column(name = "ship_condition")
     private int shipCondition;
+
 }
