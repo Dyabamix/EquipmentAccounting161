@@ -18,5 +18,4 @@ public class Equipment {
     private String name;
     @Column(name = "ship_condition")
     private int shipCondition;
-
 }

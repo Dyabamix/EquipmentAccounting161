@@ -26,8 +26,7 @@ public class EquipmentController {
     public String findAll(@RequestParam(name = "equipment_id", required = false) Long equipment_id,
                           @RequestParam(name = "defect_id", required = false) Long defect_id,
                           Model model){
-        System.out.println(equipment_id);
-        System.out.println(defect_id);
+
         if (equipment_id != null){
             equipmentService.deleteById(equipment_id);
             return "redirect:/equipments";
@@ -57,6 +56,18 @@ public class EquipmentController {
         return "redirect:/equipments";
     }
 
+    @GetMapping("/equipment-update")
+    public String updateEquipmentForm(@RequestParam(name = "equipment_id") Long equipmentId, Model model){
+        model.addAttribute("equipment" ,equipmentService.findById(equipmentId));
+        return "equipment-update";
+    }
+
+    @PostMapping("/equipment-update")
+    public String updateEquipment(Equipment equipment){
+        equipmentService.saveEquipment(equipment);
+        return "redirect:/equipments";
+    }
+
 
     //Defect create/delete/update
     @GetMapping("/defect-create")
@@ -66,6 +77,18 @@ public class EquipmentController {
 
     @PostMapping("/defect-create")
     public String createDefect(Defect defect){
+        equipmentService.saveDefect(defect);
+        return "redirect:/equipments";
+    }
+
+    @GetMapping("/defect-update")
+    public String updateDefectForm(@RequestParam(name = "defect_id") Long defectId, Model model){
+        model.addAttribute("defect" ,equipmentService.findDefectById(defectId));
+        return "defect-update";
+    }
+
+    @PostMapping("/defect-update")
+    public String updateDefect(Defect defect){
         equipmentService.saveDefect(defect);
         return "redirect:/equipments";
     }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение информации о дефекте</title>
+</head>
+<body>
+<form th:action="@{/defect-update}" th:object="${defect}" method="post">
+    <input type="hidden" th:field="*{id}" th:value="*{getId()}">
+
+    <label for="name">Дефект</label>
+    <input type="text" th:field="*{name}" th:value="*{getName()}" id="name" placeholder="Введите краткое описание дефекта">
+
+    <label for="defect_description">Описание дефекта</label>
+    <input type="text" th:field="*{defectDescription}" th:value="*{getDefectDescription()}" id="defect_description" placeholder="Введите полное описание дефекта">
+
+    <label for="date_of_detection">Дата выявления дефекта</label>
+    <input type="date" th:field="*{date}" th:value="*{getDate()}" id="date_of_detection">
+
+    <input type="submit" value="Изменить">
+</form>
+</body>
+</html>

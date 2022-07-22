@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,4 +20,7 @@ public class Defect {
     private String defectDescription;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "equipmen_id")
+    private Equipment equipment;
 }

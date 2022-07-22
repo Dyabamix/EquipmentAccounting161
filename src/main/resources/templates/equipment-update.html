@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Изменение информации об оборудовании</title>
 </head>
 <body>
+<form th:action="@{/equipment-update}" th:object="${equipment}" method="post">
+    <input type="hidden" th:field="*{id}" th:value="*{getId()}">
 
+    <label for="number_position">Номер позиции</label>
+    <input type="text" th:field="*{numberPosition}" th:value="*{getNumberPosition()}" id="number_position" placeholder="введите номер позиции">
+
+    <label for="name">Наименование позиции</label>
+    <input type="text" th:field="*{name}" th:value="*{getName()}" id="name" placeholder="введите наименование позиции">
+
+    <label for="shipCondition">Состояние оборудования</label>
+    <input type="text" th:field="*{shipCondition}" th:value="*{getShipCondition()}" id="shipCondition" placeholder="1-исправно, 2-неисправно">
+
+    <input type="submit" value="Изменить">
+</form>
 </body>
 </html>
