@@ -7,6 +7,7 @@ import com.projectForTPP2.EquipmentAccounting.repository.elementsOfTheDbStructur
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -49,5 +50,14 @@ public class EquipmentService {
 
     public void deleteDefectById(Long id){
         defectRepository.deleteById(id);
+    }
+
+    public List<Defect> findDefectsByEquipment_Id(Long id){
+        return defectRepository.findDefectsByEquipment_Id(id);
+    }
+
+    public Defect findDefectByEquipmentAndLastDate(Long id){
+        List<Defect> defects = defectRepository.findDefectsByEquipment_Id(id);
+        return new Defect();
     }
 }
