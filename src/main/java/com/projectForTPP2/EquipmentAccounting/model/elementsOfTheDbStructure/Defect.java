@@ -21,6 +21,6 @@ public class Defect {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "equipmen_id")
+    @JoinColumn(name = "equipment_id")
     private Equipment equipment;
 }

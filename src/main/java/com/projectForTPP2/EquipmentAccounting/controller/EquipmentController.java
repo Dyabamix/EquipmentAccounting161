@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -46,12 +47,15 @@ public class EquipmentController {
 
     //Equipment create/delete/update
     @GetMapping("/equipment-create")
-    public String createEquipmentForm(Equipment equipment){
+    public String createEquipmentForm(Equipment equipment, Defect defect){
         return "equipment-create";
     }
 
     @PostMapping("/equipment-create")
-    public String createEquipment(Equipment equipment){
+    public String createEquipment(Equipment equipment, Defect defect){
+        List<Defect> defectList = new ArrayList<>();
+        defectList.add(defect);
+        equipment.setDefectList(defectList);
         equipmentService.saveEquipment(equipment);
         return "redirect:/equipments";
     }

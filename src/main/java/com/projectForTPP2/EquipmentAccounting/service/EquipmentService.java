@@ -7,7 +7,7 @@ import com.projectForTPP2.EquipmentAccounting.repository.elementsOfTheDbStructur
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -57,7 +57,10 @@ public class EquipmentService {
     }
 
     public Defect findDefectByEquipmentAndLastDate(Long id){
-        List<Defect> defects = defectRepository.findDefectsByEquipment_Id(id);
-        return new Defect();
+
+        return defectRepository.findDefectsByEquipment_Id(id).
+                stream().
+                max(Comparator.comparing(Defect::getDate)).
+                orElse(null);
     }
 }

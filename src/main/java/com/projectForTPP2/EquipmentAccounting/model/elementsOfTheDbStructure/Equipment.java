@@ -18,4 +18,7 @@ public class Equipment {
     private String name;
     @Column(name = "ship_condition")
     private int shipCondition;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "equipment_id")
+    private List<Defect> defectList;
 }
