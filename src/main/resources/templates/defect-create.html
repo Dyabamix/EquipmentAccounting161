@@ -7,8 +7,7 @@
 <body>
 <form th:action="@{/defect-create}" th:object="${defect}" method="post">
 
-    <label for="name_defect">Дефект
-    </label>
+    <label for="name_defect">Дефект</label>
     <input type="text" th:field="*{name}" id="name_defect" placeholder="введите краткое описание дефекта">
 
     <label for="defect_description">Описание дефекта</label>

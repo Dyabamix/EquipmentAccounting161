@@ -38,6 +38,15 @@
         <label for="date_of_defect_detection">Дата</label>
         <input type="date" th:field="*{defect.date}" id="date_of_defect_detection" >
 
+        <label for="name_defect">Дефект</label>
+        <input type="text" th:field="${defect.name}" id="name_defect" placeholder="введите краткое описание дефекта">
+
+        <label for="defect_description">Описание дефекта</label>
+        <input type="text" th:field="${defect.defectDescription}" id="defect_description" placeholder="введите полное описание дефекта">
+
+        <label for="date_of_defect_detection">Дата</label>
+        <input type="date" th:field="${defect.date}" id="date_of_defect_detection" >
+
         <input type="submit" value="Сохранить">
     </form>
 </body>

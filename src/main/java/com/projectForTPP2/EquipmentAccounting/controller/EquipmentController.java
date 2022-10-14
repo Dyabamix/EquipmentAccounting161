@@ -2,14 +2,13 @@ package com.projectForTPP2.EquipmentAccounting.controller;
 
 import com.projectForTPP2.EquipmentAccounting.model.elementsOfTheDbStructure.Defect;
 import com.projectForTPP2.EquipmentAccounting.model.elementsOfTheDbStructure.Equipment;
-import com.projectForTPP2.EquipmentAccounting.model.elementsOfTheDbStructure.EquipmentForm;
 import com.projectForTPP2.EquipmentAccounting.service.EquipmentService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -24,8 +23,19 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipments")
-    public String findAll(Model model){
-
+    public String findAll(@RequestParam(name = "equipment_id", required = false) Long equipment_id,
+                          @RequestParam(name = "defect_id", required = false) Long defect_id,
+                          Model model){
+        System.out.println(equipment_id);
+        System.out.println(defect_id);
+        if (equipment_id != null){
+            equipmentService.deleteById(equipment_id);
+            return "redirect:/equipments";
+        }
+        if (defect_id != null){
+            equipmentService.deleteDefectById(defect_id);
+            return "redirect:/equipments";
+        }
 
         List<Equipment> equipments = equipmentService.findAll();
         List<Defect> defects = equipmentService.findAllDefect();
@@ -37,19 +47,26 @@ public class EquipmentController {
 
     //Equipment create/delete/update
     @GetMapping("/equipment-create")
-    public String createEquipmentForm(EquipmentForm equipmentForm){
+    public String createEquipmentForm(Equipment equipment){
         return "equipment-create";
     }
 
     @PostMapping("/equipment-create")
-    public String createEquipment(EquipmentForm equipmentForm){
-        if (equipmentForm.getDefect().getDate() != null){
-            equipmentForm.getEquipment().getDefects().add(equipmentForm.getDefect());
-        }
-        System.out.println(equipmentForm.getEquipment().getId());
-        System.out.println(equipmentForm.getDefect().getId());
+    public String createEquipment(Equipment equipment){
+        equipmentService.saveEquipment(equipment);
+        return "redirect:/equipments";
+    }
 
-        equipmentService.saveEquipment(equipmentForm.getEquipment());
+
+    //Defect create/delete/update
+    @GetMapping("/defect-create")
+    public String createDefectForm(Defect defect){
+        return "defect-create";
+    }
+
+    @PostMapping("/defect-create")
+    public String createDefect(Defect defect){
+        equipmentService.saveDefect(defect);
         return "redirect:/equipments";
     }
 
