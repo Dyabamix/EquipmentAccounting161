@@ -15,7 +15,7 @@
         <td style="border: 1px solid black" th:text="${equipment.getNumberPosition()}"></td>
         <td style="border: 1px solid black" th:text="${equipment.getName()}"></td>
         <td style="border: 1px solid black" th:text="${equipment.getShipCondition()}"></td>
-        <td style="border: 1px solid black" ><a th:href="@{equipment-update/id={id}(id=${equipment.getId})}">Edit</a></td>
+        <td style="border: 1px solid black" ><a th:href="@{equipment-update/?id={id}(id=${equipment.getId})}">Edit</a></td>
         <td style="border: 1px solid black" ><a th:href="@{equipments/?equipment_id={id}(id=${equipment.getId})}">Delete</a></td>
 
     </tr>
@@ -23,8 +23,6 @@
 </div>
 
 <div>
-    <button type="submit" onclick="location.href='/defect-create'">Забабахать новый дефект</button>
-
     <table>
         <tr th:each="defect: ${defects}">
             <td style="border: 1px solid black" th:text="${defect.getName()}"></td>

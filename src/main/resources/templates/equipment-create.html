@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org/">
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Создание нового пользователя</title>
 </head>
 <body>
-    <form th:action="@{/equipment-create}" th:object="${equipment}" method="post">
+    <div>
+        <h2>Оборудование</h2>
+    </div>
+
+    <form th:action="@{/equipment-create}" th:object="${equipmentForm}" method="post">
 
         <label for="number_position">Номер позиции</label>
-        <input type="text" th:field="*{numberPosition}" id="number_position" placeholder="введите номер позиции">
+        <input type="text" th:field="*{equipment.numberPosition}" id="number_position" placeholder="введите номер позиции">
 
         <label for="name">Наименование позиции</label>
-        <input type="text" th:field="*{name}" id="name" placeholder="введите наименование позиции">
+        <input type="text" th:field="*{equipment.name}" id="name" placeholder="введите наименование позиции">
 
         <label for="shipCondition">Состояние оборудования</label>
-        <input type="text" th:field="*{shipCondition}" id="shipCondition" placeholder="1-исправно, 2-неисправно">
+        <input type="text" th:field="*{equipment.shipCondition}" id="shipCondition" placeholder="1-исправно, 2-неисправно">
+
+
+
+    <div>
+        <h2>Дефект</h2>
+    </div>
+
+
+
+        <label for="name_defect">Дефект
+        </label>
+        <input type="text" th:field="*{defect.name}" id="name_defect" placeholder="введите краткое описание дефекта">
+
+        <label for="defect_description">Описание дефекта</label>
+        <input type="text" th:field="*{defect.defectDescription}" id="defect_description" placeholder="введите полное описание дефекта">
+
+        <label for="date_of_defect_detection">Дата</label>
+        <input type="date" th:field="*{defect.date}" id="date_of_defect_detection" >
 
         <input type="submit" value="Сохранить">
     </form>
